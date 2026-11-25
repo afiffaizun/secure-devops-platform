@@ -20,3 +20,8 @@ def test_root():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"service": "secure-devops-platform", "version": "0.1.0"}
+
+
+def test_not_found():
+    response = client.get("/invalid-route")
+    assert response.status_code == 404
