@@ -132,7 +132,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Trivy image scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           image-ref: ${{ env.IMAGE }}:${{ github.sha }}
           format: table
@@ -142,7 +142,7 @@ jobs:
           severity: "CRITICAL,HIGH"
       - name: Trivy SARIF
         if: always()
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           image-ref: ${{ env.IMAGE }}:${{ github.sha }}
           format: sarif
