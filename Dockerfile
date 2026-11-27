@@ -8,6 +8,11 @@ RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 # ---- runtime stage ----
 FROM python:3.12-slim
 
+RUN apt-get update \
+    && apt-get -y install --only-upgrade libzstd1 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN groupadd -r app && useradd -r -g app app
 WORKDIR /app
 
